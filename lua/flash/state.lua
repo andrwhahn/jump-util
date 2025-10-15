@@ -399,6 +399,23 @@ function M:step(opts)
     return
   end
 
+  if self.opts.label.autojump ~= false then
+    local unique ---@type Flash.Match?
+    for _, match in ipairs(self.results) do
+      if match.label ~= nil and match.label ~= false then
+        if unique then
+          unique = nil
+          break
+        end
+        unique = match
+      end
+    end
+    if unique then
+      self:jump(unique)
+      return
+    end
+  end
+
   -- when we exceed max length, either jump to the label,
   -- or input the last key and break
   if self.opts.search.max_length and #self.pattern() > self.opts.search.max_length then

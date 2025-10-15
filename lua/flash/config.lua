@@ -94,6 +94,8 @@ local defaults = {
     -- minimum pattern length to show labels
     -- Ignored for custom labelers.
     min_pattern_length = 0,
+    -- automatically jump when there's only one label to pick from
+    autojump = true,
     -- Enable this to use rainbow colors to highlight labels
     -- Can be useful for visualizing Treesitter ranges.
     rainbow = {
